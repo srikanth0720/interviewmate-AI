@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>InterviewMate AI — Voice Interview Coach</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="/"
+          ><span class="brand-mark">IM</span
+          ><span>InterviewMate <b>AI</b></span></a
+        >
+        <div class="top-actions">
+          <span class="status-dot"></span
+          ><span id="apiStatus">Checking services…</span>
+        </div>
+      </header>
+      <main>
+        <section class="hero">
+          <div class="eyebrow">YOUR PERSONAL VOICE INTERVIEW COACH</div>
+          <h1>Practice out loud.<br /><span>Get interview-ready.</span></h1>
+          <p class="hero-copy">
+            Answer real interview questions with your voice. Get a transcript,
+            structured feedback, and spoken coaching to improve your next
+            answer.
+          </p>
+          <div class="hero-pills">
+            <span>🎙 Voice-first practice</span><span>✦ AI feedback</span
+            ><span>↗ Progress history</span>
+          </div>
+        </section>
+
+        <section class="workspace">
+          <div class="panel setup-panel">
+            <div class="section-kicker">01 / SET UP YOUR SESSION</div>
+            <h2>Choose your practice</h2>
+            <label for="category">Interview category</label>
+            <select id="category">
+              <option>Python</option>
+              <option>DSA</option>
+              <option>DBMS</option>
+              <option>HR</option>
+              <option>Behavioral</option>
+            </select>
+            <label for="language">Answer language</label>
+            <select id="language">
+              <option value="en-IN">English (India)</option>
+              <option value="te-IN">Telugu</option>
+              <option value="hi-IN">Hindi</option>
+              <option value="indic-auto">Auto detect (Indic)</option>
+            </select>
+            <button id="startBtn" class="button primary full">
+              Start interview <span>→</span>
+            </button>
+            <div id="sessionNotice" class="notice">
+              Start a session to load your first question.
+            </div>
+          </div>
+
+          <div class="panel interview-panel">
+            <div class="section-kicker">02 / YOUR INTERVIEW</div>
+            <div class="question-top">
+              <span class="tag" id="categoryTag">PYTHON</span
+              ><span id="questionCount" class="muted">Question 1</span>
+            </div>
+            <h2 id="questionText">Your interview question will appear here.</h2>
+            <p class="muted small">
+              Take a moment to structure your answer. Aim for 30–90 seconds;
+              Prisma REST accepts audio clips up to 30 seconds in this starter
+              build.
+            </p>
+            <div class="recorder">
+              <div class="wave" id="wave">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                ><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+              <div class="rec-time" id="recTime">00:00</div>
+              <button
+                id="recordBtn"
+                class="record-button"
+                disabled
+                aria-label="Start recording"
+              >
+                <span></span>
+              </button>
+              <div id="recordLabel" class="record-label">Start recording</div>
+              <div class="record-hint">
+                Allow microphone access when prompted
+              </div>
+            </div>
+            <div class="rec-actions">
+              <button id="submitBtn" class="button primary" disabled>
+                Transcribe & evaluate</button
+              ><button id="nextBtn" class="button ghost" disabled>
+                Next question →
+              </button>
+            </div>
+            <div id="transcriptBox" class="transcript hidden">
+              <div class="section-kicker">YOUR TRANSCRIPT</div>
+              <p id="transcriptText"></p>
+            </div>
+          </div>
+        </section>
+
+        <section id="results" class="panel results-panel hidden">
+          <div class="section-kicker">03 / AI COACHING REPORT</div>
+          <div class="result-head">
+            <div>
+              <h2>Your answer, evaluated.</h2>
+              <p class="muted">
+                Use this feedback to make your next answer stronger.
+              </p>
+            </div>
+            <div class="score-ring">
+              <strong id="totalScore">—</strong><span>/ 100</span>
+            </div>
+          </div>
+          <div id="scoreGrid" class="score-grid"></div>
+          <div class="feedback-grid">
+            <div class="feedback-card">
+              <h3>✦ Strengths</h3>
+              <ul id="strengths"></ul>
+            </div>
+            <div class="feedback-card">
+              <h3>↗ Improve next</h3>
+              <ul id="weaknesses"></ul>
+            </div>
+          </div>
+          <div class="feedback-card improved">
+            <h3>Suggested improved answer</h3>
+            <p id="improvedAnswer"></p>
+          </div>
+          <div class="feedback-card">
+            <h3>Actionable suggestions</h3>
+            <ul id="suggestions"></ul>
+          </div>
+          <div class="speak-row">
+            <button id="speakBtn" class="button secondary">
+              ▶ Listen to AI feedback</button
+            ><span id="speakStatus" class="muted small"></span>
+          </div>
+          <audio
+            id="feedbackAudio"
+            controls
+            class="audio-player hidden"
+          ></audio>
+        </section>
+
+        <section class="panel history-panel">
+          <div class="history-head">
+            <div>
+              <div class="section-kicker">YOUR PRACTICE</div>
+              <h2>Recent sessions</h2>
+            </div>
+            <button id="clearHistory" class="button ghost">Clear ↻</button>
+          </div>
+          <div id="historyList" class="history-list">
+            <p class="muted">Your completed sessions will appear here.</p>
+          </div>
+        </section>
+      </main>
+      <footer>
+        InterviewMate AI <span>Built with Gnani Prisma + Timbre</span>
+      </footer>
+    </div>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
